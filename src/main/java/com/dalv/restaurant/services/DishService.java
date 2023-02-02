@@ -15,7 +15,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class DishService {
 
-    private DishRepository dishRepository;
+    private final DishRepository dishRepository;
 
     @Autowired
     public DishService(DishRepository dishRepository) {

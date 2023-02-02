@@ -8,6 +8,7 @@ import com.dalv.restaurant.services.DishService;
 import com.dalv.restaurant.services.MenuService;
 import com.dalv.restaurant.services.TypeDishService;
 import com.dalv.restaurant.util.ErrorResponse;
+import com.dalv.restaurant.util.TypeDishNotCreatedException;
 import com.dalv.restaurant.util.TypeDishNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
