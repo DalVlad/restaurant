@@ -1,3 +1,8 @@
+create table type_dish (
+    id  bigserial not null,
+    type_name varchar(255),
+    primary key (id));
+
 create table dish (
     id  bigserial not null,
     name varchar(30),
@@ -19,7 +24,4 @@ create table menu_dish (
     foreign key (menu_id) references menu(id),
     foreign key (dish_id) references dish(id));
 
-create table type_dish (
-    id  bigserial not null,
-    type_name varchar(255),
-    primary key (id));
+
