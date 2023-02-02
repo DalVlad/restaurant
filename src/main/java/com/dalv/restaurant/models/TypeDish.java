@@ -1,4 +1,4 @@
-package com.dlav.restaurant.Models;
+package com.dalv.restaurant.models;
 
 import javax.persistence.*;
 import java.util.List;

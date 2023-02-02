@@ -1,4 +1,4 @@
-package com.dlav.restaurant;
+package com.dalv.restaurant;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

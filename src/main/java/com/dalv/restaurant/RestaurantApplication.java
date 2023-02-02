@@ -1,4 +1,4 @@
-package com.dlav.restaurant;
+package com.dalv.restaurant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

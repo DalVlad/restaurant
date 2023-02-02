@@ -1,4 +1,4 @@
-package com.dlav.restaurant.Models;
+package com.dalv.restaurant.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -26,8 +26,6 @@ public class Dish {
     @JoinColumn(name = "type_dish_id", referencedColumnName = "id")
     private TypeDish typeDish;
 
-
-    //TODO каскадное удаление
     @ManyToMany(mappedBy = "dishes")
     private List<Menu> menus;
 

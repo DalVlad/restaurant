@@ -1,10 +1,7 @@
-package com.dlav.restaurant.Models;
-
-import org.hibernate.annotations.Cascade;
+package com.dalv.restaurant.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Date;
 import java.util.List;
 
 @Entity
