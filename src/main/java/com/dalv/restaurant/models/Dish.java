@@ -1,5 +1,7 @@
 package com.dalv.restaurant.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -27,6 +29,7 @@ public class Dish {
     private TypeDish typeDish;
 
     @ManyToMany(mappedBy = "dishes")
+    @JsonIgnore
     private List<Menu> menus;
 
     public long getId() {

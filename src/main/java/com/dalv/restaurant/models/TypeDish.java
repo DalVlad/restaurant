@@ -1,5 +1,7 @@
 package com.dalv.restaurant.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,7 @@ public class TypeDish {
     private String typeName;
 
     @OneToMany(mappedBy = "typeDish")
+    @JsonIgnore
     private List<Dish> dish;
 
     public long getId() {
