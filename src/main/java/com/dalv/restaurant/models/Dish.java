@@ -15,11 +15,11 @@ public class Dish {
     private long id;
 
     @Column(name = "name")
-    @Size(min = 2, max = 30, message = "Название должно быть от 2 до 30 символов")
+    @Size(min = 2, max = 30, message = "Title must be between 2 and 30 characters")
     private String name;
 
     @Column(name = "price")
-    @Min(value = 0, message = "Некорректная цена")
+    @Min(value = 0, message = "Invalid price")
     private double price;
 
     @ManyToOne

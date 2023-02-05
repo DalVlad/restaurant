@@ -1,9 +1,6 @@
 package com.dalv.restaurant.dto;
 
-import com.dalv.restaurant.models.Menu;
 import com.dalv.restaurant.models.TypeDish;
-
-import java.util.List;
 
 public class DishDTO {
 
@@ -14,8 +11,6 @@ public class DishDTO {
     private double price;
 
     private TypeDish typeDish;
-
-    private List<Menu> menus;
 
     public long getId() {
         return id;
@@ -49,11 +44,4 @@ public class DishDTO {
         this.typeDish = typeDish;
     }
 
-    public List<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(List<Menu> menus) {
-        this.menus = menus;
-    }
 }

@@ -2,7 +2,7 @@ package com.dalv.restaurant.services;
 
 import com.dalv.restaurant.models.Menu;
 import com.dalv.restaurant.repositories.MenuRepository;
-import com.dalv.restaurant.util.MenuNotFoundException;
+import com.dalv.restaurant.util.MenuError.MenuNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

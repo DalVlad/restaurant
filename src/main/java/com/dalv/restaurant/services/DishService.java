@@ -3,7 +3,7 @@ package com.dalv.restaurant.services;
 
 import com.dalv.restaurant.repositories.DishRepository;
 import com.dalv.restaurant.models.Dish;
-import com.dalv.restaurant.util.DishNotFoundException;
+import com.dalv.restaurant.util.DishError.DishNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

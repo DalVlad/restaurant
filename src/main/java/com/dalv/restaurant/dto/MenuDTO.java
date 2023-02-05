@@ -10,9 +10,9 @@ public class MenuDTO {
 
     private String name;
 
-    private String TimeStart;
+    private String timeStart;
 
-    private String TimeEnd;
+    private String timeEnd;
 
     private List<Dish> dishes;
 
@@ -33,19 +33,19 @@ public class MenuDTO {
     }
 
     public String getTimeStart() {
-        return TimeStart;
+        return timeStart;
     }
 
     public void setTimeStart(String timeStart) {
-        TimeStart = timeStart;
+        this.timeStart = timeStart;
     }
 
     public String getTimeEnd() {
-        return TimeEnd;
+        return timeEnd;
     }
 
     public void setTimeEnd(String timeEnd) {
-        TimeEnd = timeEnd;
+        this.timeEnd = timeEnd;
     }
 
     public List<Dish> getDishes() {

@@ -1,5 +1,7 @@
 package com.dalv.restaurant.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -14,16 +16,16 @@ public class Menu {
     private long id;
 
     @Column(name = "name")
-    @Size(min = 2, max = 30, message = "Название должно быть от 2 до 30 символов")
+    @Size(min = 2, max = 30, message = "Title must be between 2 and 30 characters")
     private String name;
 
     @Column(name = "time_start")
-    @Size(min = 3, max = 10, message = "Некорректно указано время")
-    private String TimeStart;
+    @Size(min = 3, max = 10, message = "Incorrect time specified")
+    private String timeStart;
 
     @Column(name = "time_end")
-    @Size(min = 3, max = 10, message = "Некорректно указано время")
-    private String TimeEnd;
+    @Size(min = 3, max = 10, message = "Incorrect time specified")
+    private String timeEnd;
 
     @ManyToMany
     @JoinTable(name = "Menu_Dish", joinColumns = @JoinColumn(name = "menu_id"),
@@ -47,19 +49,19 @@ public class Menu {
     }
 
     public String getTimeStart() {
-        return TimeStart;
+        return timeStart;
     }
 
     public void setTimeStart(String timeStart) {
-        TimeStart = timeStart;
+        this.timeStart = timeStart;
     }
 
     public String getTimeEnd() {
-        return TimeEnd;
+        return timeEnd;
     }
 
     public void setTimeEnd(String timeEnd) {
-        TimeEnd = timeEnd;
+        this.timeEnd = timeEnd;
     }
 
     public List<Dish> getDishes() {
