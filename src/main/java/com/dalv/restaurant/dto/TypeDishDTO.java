@@ -1,9 +1,5 @@
 package com.dalv.restaurant.dto;
 
-import com.dalv.restaurant.models.Dish;
-
-import java.util.List;
-
 public class TypeDishDTO {
 
     private long id;
