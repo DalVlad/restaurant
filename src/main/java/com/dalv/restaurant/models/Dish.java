@@ -17,7 +17,7 @@ public class Dish {
     private long id;
 
     @Column(name = "name")
-    @Size(min = 2, max = 30, message = "Title must be between 2 and 30 characters")
+    @Size(min = 2, max = 255, message = "Title must be between 2 and 30 characters")
     private String name;
 
     @Column(name = "price")

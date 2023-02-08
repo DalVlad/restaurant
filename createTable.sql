@@ -5,7 +5,7 @@ create table type_dish (
 
 create table dish (
     id  bigserial not null,
-    name varchar(30),
+    name varchar(255),
     price float8 check (price>=0),
     type_dish_id int8,
     primary key (id),
