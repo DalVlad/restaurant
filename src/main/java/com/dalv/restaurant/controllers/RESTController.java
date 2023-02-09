@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class RESTController {
 
     private final DishService dishService;
@@ -47,7 +48,7 @@ public class RESTController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/typeDishes")
+    @GetMapping("/typeDish")
     public List<TypeDishDTO> getAllTypeDish(){
         return typeDishService.findAll().stream().map(this::convertToTypeDishDTO).collect(Collectors.toList());
     }
@@ -83,7 +84,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/dishes")
+    @GetMapping("/dish")
     public List<DishDTO> getAllDish(){
         return dishService.findAll().stream().map(this::convertToDishDTO).collect(Collectors.toList());
     }
@@ -118,8 +119,8 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @GetMapping("/menus")
-    public List<MenuDTO> getAllMenus(){
+    @GetMapping("/menu")
+    public List<MenuDTO> getAllMenu(){
         return menuService.findAll().stream().map(this::convertToMenuDTO).collect(Collectors.toList());
     }
 

@@ -1,34 +1,28 @@
 import "./style/table.css"
+import axios from "axios";
+import menuModel from "./menuModel";
 
 
+const url = "http://localhost:8080/api/menu/";
 
+let menus: menuModel[] = [];
 function Menu() {
+  axios.get(url).then((res) =>{
+    menus = res.data;
+    console.log(menus)
+  });
   return (
     <div className="Menu">
         <div className="table">
             <table>
                 <tr>
-                    <tr><th>Employee</th><th>Salary</th><th>Bonus</th><th>Supervisor</th></tr>
-                    <tr><td>Stephen C. Cox</td><td>$300</td><td>$50</td><td>Bob</td></tr>
-                    <tr><td>Josephin Tan</td><td>$150</td><td>-</td><td>Annie</td></tr>
-                    <tr><td>Joyce Ming</td><td>$200</td><td>$35</td><td>Andy</td></tr>
-                    <tr><td>James A. Pentel</td><td>$175</td><td>$25</td><td>Annie</td></tr>
-                    <tr><td>Stephen C. Cox</td><td>$300</td><td>$50</td><td>Bob</td></tr>
-                    <tr><td>Josephin Tan</td><td>$150</td><td>-</td><td>Annie</td></tr>
-                    <tr><td>Joyce Ming</td><td>$200</td><td>$35</td><td>Andy</td></tr>
-                    <tr><td>James A. Pentel</td><td>$175</td><td>$25</td><td>Annie</td></tr>
-                    <tr><td>Stephen C. Cox</td><td>$300</td><td>$50</td><td>Bob</td></tr>
-                    <tr><td>Josephin Tan</td><td>$150</td><td>-</td><td>Annie</td></tr>
-                    <tr><td>Joyce Ming</td><td>$200</td><td>$35</td><td>Andy</td></tr>
-                    <tr><td>James A. Pentel</td><td>$175</td><td>$25</td><td>Annie</td></tr>
-                    <tr><td>Stephen C. Cox</td><td>$300</td><td>$50</td><td>Bob</td></tr>
-                    <tr><td>Josephin Tan</td><td>$150</td><td>-</td><td>Annie</td></tr>
-                    <tr><td>Joyce Ming</td><td>$200</td><td>$35</td><td>Andy</td></tr>
-                    <tr><td>James A. Pentel</td><td>$175</td><td>$25</td><td>Annie</td></tr>
-                    <tr><td>Stephen C. Cox</td><td>$300</td><td>$50</td><td>Bob</td></tr>
-                    <tr><td>Josephin Tan</td><td>$150</td><td>-</td><td>Annie</td></tr>
-                    <tr><td>Joyce Ming</td><td>$200</td><td>$35</td><td>Andy</td></tr>
-                    <tr><td>James A. Pentel</td><td>$175</td><td>$25</td><td>Annie</td></tr>
+                    <tr><th>name</th><th>timeStart</th><th>timeEnd</th><th>dishes</th></tr>
+                    {menus.map((el) => (<tr>
+                      <td>{el.name}</td>
+                      <td>{el.timeStart}</td>
+                      <td>{el.timeEnd}</td>
+                      <td>{el.dishes.map((el2) => (<div> - {el2.name} : {el2.price} руб.</div>))}</td>
+                    </tr>)) }
                 </tr>
             </table>
         </div>

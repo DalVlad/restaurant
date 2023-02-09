@@ -21,10 +21,7 @@ table{
   }
   td {
     border-bottom: 1px solid #ccc;
-    color: #669;
+    color: rgb(31, 31, 47);
     padding: 9px 8px;
     transition: .3s linear;
-  }
-  tr:hover td {
-    color: #6699ff;
   }
