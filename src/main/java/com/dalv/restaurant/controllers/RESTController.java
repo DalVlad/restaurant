@@ -68,7 +68,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PatchMapping("/updateTypeDish/{id}")
+    @PatchMapping("/typeDish/{id}")
     public ResponseEntity<HttpStatus> updateTypeDish(@RequestBody @Valid TypeDishDTO typeDishDTO,
                                                      BindingResult bindingResult, @PathVariable("id") Long id){
         if(bindingResult.hasErrors()){
@@ -78,7 +78,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteTypeDish/{id}")
+    @DeleteMapping("/typeDish/{id}")
     public ResponseEntity<HttpStatus> deleteTypeDish(@PathVariable("id") Long id){
         typeDishService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -103,7 +103,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PatchMapping("/updateDish/{id}")
+    @PatchMapping("/dish/{id}")
     public ResponseEntity<HttpStatus> updateDish(@RequestBody @Valid DishDTO dishDTO, BindingResult bindingResult,
                                                      @PathVariable("id") Long id){
         if(bindingResult.hasErrors()){
@@ -113,7 +113,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteDish/{id}")
+    @DeleteMapping("/dish/{id}")
     public ResponseEntity<HttpStatus> deleteDish(@PathVariable("id") Long id){
         dishService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
@@ -138,7 +138,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PatchMapping("/updateMenu/{id}")
+    @PatchMapping("/menu/{id}")
     public ResponseEntity<HttpStatus> updateMenu(@RequestBody @Valid MenuDTO menuDTO, BindingResult bindingResult,
                                                      @PathVariable("id") Long id){
         if(bindingResult.hasErrors()){
@@ -148,7 +148,7 @@ public class RESTController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deleteMenu/{id}")
+    @DeleteMapping("/menu/{id}")
     public ResponseEntity<HttpStatus> deleteMenu(@PathVariable("id") Long id){
         menuService.delete(id);
         return ResponseEntity.ok(HttpStatus.OK);
