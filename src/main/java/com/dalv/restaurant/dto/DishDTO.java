@@ -1,13 +1,18 @@
 package com.dalv.restaurant.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 import com.dalv.restaurant.models.TypeDish;
 
 public class DishDTO {
 
     private long id;
 
+    @Size(min = 2, max = 255, message = "Title must be between 2 and 30 characters")
     private String name;
 
+    @Min(value = 0, message = "Invalid price")
     private double price;
 
     private TypeDish typeDish;

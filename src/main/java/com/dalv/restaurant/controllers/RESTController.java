@@ -132,7 +132,7 @@ public class RESTController {
     @PostMapping("/menu")
     public ResponseEntity<HttpStatus> createMenu(@RequestBody @Valid MenuDTO menuDTO, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            throw new DishNotCreatedException(createErrorMsg(bindingResult.getFieldErrors()));
+            throw new MenuNotCreatedException(createErrorMsg(bindingResult.getFieldErrors()));
         }
         menuService.save(convertToMenu(menuDTO));
         return ResponseEntity.ok(HttpStatus.OK);
@@ -142,7 +142,7 @@ public class RESTController {
     public ResponseEntity<HttpStatus> updateMenu(@RequestBody @Valid MenuDTO menuDTO, BindingResult bindingResult,
                                                      @PathVariable("id") Long id){
         if(bindingResult.hasErrors()){
-            throw new DishNotCreatedException(createErrorMsg(bindingResult.getFieldErrors()));
+            throw new MenuNotCreatedException(createErrorMsg(bindingResult.getFieldErrors()));
         }
         menuService.update(id, convertToMenu(menuDTO));
         return ResponseEntity.ok(HttpStatus.OK);
