@@ -1,27 +1,36 @@
-import "./style/table.css"
-import axios from "axios";
-import typeDishModel from "./typeDishModel";
+import "./style/table.css";
+import {AxiosError} from "axios";
+import {typeDishModel} from "./typeDishModel";
+import { useQuery } from "react-query";
+import HttpService from "./HttpService"
 
-
-const url = "http://localhost:8080/api/typeDish/";
-let typeDishes: typeDishModel[] = [];
 function TypeDish() {
-    axios.get(url).then((res) =>{
-        typeDishes = res.data;
-        console.log(typeDishes)
-      });
+  const { isLoading, isError, data, error } = useQuery<typeDishModel[], AxiosError>(
+    "menu",
+    HttpService.getAllTypeDish
+  );
   return (
     <div className="Menu">
-        <div className="table">
-            <table>
-                <tr>
-                    <tr><th>name</th></tr>
-                    {typeDishes.map((el) => (<tr>
-                      <td>{el.typeName}</td>
-                    </tr>)) }
-                </tr>
-            </table>
-        </div>
+      <div className="table">
+        {isLoading ? (
+          <div>IsLoading</div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>typeName</th>
+              </tr>
+            </thead>
+            <tbody>
+              {!isError && !isLoading && data?.map((el) => (
+                  <tr key={el.id}>
+                    <td>{el.typeName}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }

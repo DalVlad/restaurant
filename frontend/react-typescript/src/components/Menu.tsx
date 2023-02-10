@@ -1,31 +1,51 @@
-import "./style/table.css"
-import axios from "axios";
-import menuModel from "./menuModel";
+import "./style/table.css";
+import { AxiosError } from "axios";
+import { useQuery } from "react-query";
+import {menuModel} from "./menuModel";
+import HttpService from "./HttpService";
 
-
-const url = "http://localhost:8080/api/menu/";
-
-let menus: menuModel[] = [];
 function Menu() {
-  axios.get(url).then((res) =>{
-    menus = res.data;
-    console.log(menus)
-  });
+  const { isLoading, isError, data, error } = useQuery<menuModel[], AxiosError>(
+    "menu",
+    HttpService.getAllMenu
+  );
   return (
     <div className="Menu">
-        <div className="table">
-            <table>
-                <tr>
-                    <tr><th>name</th><th>timeStart</th><th>timeEnd</th><th>dishes</th></tr>
-                    {menus.map((el) => (<tr>
-                      <td>{el.name}</td>
-                      <td>{el.timeStart}</td>
-                      <td>{el.timeEnd}</td>
-                      <td>{el.dishes.map((el2) => (<div> - {el2.name} : {el2.price} руб.</div>))}</td>
-                    </tr>)) }
-                </tr>
-            </table>
-        </div>
+      <div className="table">
+        {isLoading ? (
+          <div>IsLoading</div>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th>name</th>
+                <th>timeStart</th>
+                <th>timeEnd</th>
+                <th>dishes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {!isError &&
+                !isLoading &&
+                data?.map((el) => (
+                  <tr key={el.id}>
+                    <td>{el.name}</td>
+                    <td>{el.timeStart}</td>
+                    <td>{el.timeEnd}</td>
+                    <td>
+                      {el?.dishes?.map((el2) => (
+                        <div key={el2.id}>
+                          {" "}
+                          - {el2?.name} : {el2?.price} руб.
+                        </div>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        )}
+      </div>
     </div>
   );
 }

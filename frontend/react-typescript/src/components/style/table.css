@@ -9,9 +9,7 @@ table{
     max-width: 70%;
     width: 70%;
     border-collapse: collapse;
-    text-align: left;
-    display: flex;
-    justify-content: space-evenly;
+    text-align: center;
   }
   th {
     font-weight: normal;
