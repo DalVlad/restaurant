@@ -1,9 +1,9 @@
 import { Route, Routes, Link} from "react-router-dom";
 import "./style/navigationBar.css"
 import Menu from "./Menu"
-// import menuModel from "./menuModel"
 import Dish from "./Dish";
 import TypeDish from "./TypeDish";
+import UpdateDish from "./UpdateDish";
 
 
 
@@ -20,6 +20,7 @@ function NavigationBar() {
                 <Route path="/menus" element={< Menu />} />
                 <Route path="/dishes" element={< Dish />} />
                 <Route path="/typeDish" element={< TypeDish />} />
+                <Route path="/updateDish/:id" element={< UpdateDish />} />
             </Routes>
         </div>
     </div>

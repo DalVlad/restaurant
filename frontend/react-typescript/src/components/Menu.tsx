@@ -1,13 +1,22 @@
 import "./style/table.css";
 import { AxiosError } from "axios";
-import { useQuery } from "react-query";
-import {menuModel} from "./menuModel";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import {menuModel} from './Models/menuModel'
 import HttpService from "./HttpService";
-
+ 
 function Menu() {
-  const { isLoading, isError, data, error } = useQuery<menuModel[], AxiosError>(
+  const queryClient = useQueryClient();
+  const { isLoading, isError, data } = useQuery<menuModel[], AxiosError>(
     "menu",
     HttpService.getAllMenu
+  );
+  const deleteMenu = useMutation(
+    (id: number) => HttpService.deleteMenu(id),{
+      onSuccess: async () => {
+          await queryClient.invalidateQueries("menu");
+
+      }
+  }
   );
   return (
     <div className="Menu">
@@ -22,6 +31,7 @@ function Menu() {
                 <th>timeStart</th>
                 <th>timeEnd</th>
                 <th>dishes</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -40,6 +50,7 @@ function Menu() {
                         </div>
                       ))}
                     </td>
+                    <td><button onClick={() => {deleteMenu.mutate(el.id)}}>Удалить</button></td>
                   </tr>
                 ))}
             </tbody>

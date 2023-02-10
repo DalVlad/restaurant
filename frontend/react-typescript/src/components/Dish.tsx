@@ -1,15 +1,26 @@
 import "./style/table.css";
-import {dishModel} from "./dishModel";
+import {dishModel} from "./Models/dishModel";
 import { AxiosError } from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useMutation, useQueryClient } from "react-query";
 import HttpService from "./HttpService";
+import { Link } from "react-router-dom";
 
 function Dish() {
-  const {isLoading, isError, data, error} = useQuery<dishModel[], AxiosError>(
-    "menu", HttpService.getAllDish
+  const queryClient = useQueryClient();
+  const {isLoading, isError, data} = useQuery<dishModel[], AxiosError>(
+    "dish", HttpService.getAllDish
   );
+  const deleteDish = useMutation(
+    (id: number) => HttpService.deleteMenu(id),{
+      onSuccess: async () => {
+          await queryClient.invalidateQueries("dish");
+
+      }
+  }
+  );
+
   return (
-    <div className="Menu">
+    <div className="Dish">
       <div className="table">
         <table>
           <thead>
@@ -17,6 +28,7 @@ function Dish() {
               <th>name</th>
               <th>price</th>
               <th>typeDish</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -27,6 +39,8 @@ function Dish() {
                   <td>
                     {el?.typeDish?.typeName}
                   </td>
+                  <td><Link to={`/updateDish/${el.id}`} >Изменить</Link></td>
+                  <td><button onClick={() => {deleteDish.mutate(el.id)}}>Удалить</button></td>
                 </tr>
               ))}
           </tbody>
