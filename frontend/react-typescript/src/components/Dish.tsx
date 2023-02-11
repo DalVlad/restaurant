@@ -11,7 +11,7 @@ function Dish() {
     "dish", HttpService.getAllDish
   );
   const deleteDish = useMutation(
-    (id: number) => HttpService.deleteMenu(id),{
+    (id: number) => HttpService.deleteDish(id),{
       onSuccess: async () => {
           await queryClient.invalidateQueries("dish");
 
@@ -25,9 +25,10 @@ function Dish() {
         <table>
           <thead>
             <tr>
-              <th>name</th>
-              <th>price</th>
-              <th>typeDish</th>
+              <th>Название</th>
+              <th>Цена</th>
+              <th>Тип</th>
+              <th></th>
               <th></th>
             </tr>
           </thead>
@@ -39,7 +40,7 @@ function Dish() {
                   <td>
                     {el?.typeDish?.typeName}
                   </td>
-                  <td><Link to={`/updateDish/${el.id}`} >Изменить</Link></td>
+                  <td><Link to={`/updateDish/${el.id}`} >Изменить, создать</Link></td>
                   <td><button onClick={() => {deleteDish.mutate(el.id)}}>Удалить</button></td>
                 </tr>
               ))}

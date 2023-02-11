@@ -3,6 +3,7 @@ import {AxiosError} from "axios";
 import {typeDishModel} from "./Models/typeDishModel";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import HttpService from "./HttpService"
+import { Link } from "react-router-dom";
 
 function TypeDish() {
   const queryClient = useQueryClient();
@@ -11,7 +12,7 @@ function TypeDish() {
     HttpService.getAllTypeDish
   );
   const deleteTypeDish = useMutation(
-    (id: number) => HttpService.deleteMenu(id),{
+    (id: number) => HttpService.deleteTypeDish(id),{
       onSuccess: async () => {
           await queryClient.invalidateQueries("typeDish");
 
@@ -27,7 +28,8 @@ function TypeDish() {
           <table>
             <thead>
               <tr>
-                <th>typeName</th>
+                <th>Тип</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -35,6 +37,7 @@ function TypeDish() {
               {!isError && !isLoading && data?.map((el) => (
                   <tr key={el.id}>
                     <td>{el.typeName}</td>
+                    <td><Link to={`/updateTypeDish/${el.id}`} >Изменить, создать</Link></td>
                     <td><button onClick={() => {deleteTypeDish.mutate(el.id)}}>Удалить</button></td>
                   </tr>
                 ))}

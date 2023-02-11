@@ -1,10 +1,11 @@
-import "./style/forma.css";
+import "../style/forma.css";
 import { useQuery } from "react-query";
 import { Formik } from "formik";
-import { dishModel } from "./Models/dishModel";
+import { dishModel } from "../Models/dishModel";
 import { useParams } from "react-router";
 import { AxiosError } from "axios";
-import HttpService from "./HttpService";
+import HttpService from "../HttpService";
+import { typeDishModel } from "../Models/typeDishModel";
 
 const UpdateDish = () => {
   let { id } = useParams();
@@ -13,23 +14,24 @@ const UpdateDish = () => {
     ["dish", id],
     () => HttpService.getDish(idDish)
   );
-
+  const typeDishAll = useQuery<typeDishModel[], AxiosError>(
+    ["typeDishes"], HttpService.getAllTypeDish
+  );
   return (
     <div className="updateDish">
       <div className="forma">
-        {isLoading ? (
+        {(isLoading ) ? (
           <div>IsLoading</div>
         ) : (
-          <Formik 
-            initialValues={{
+          <Formik  
+              initialValues={{
               id: data!.id,
               name: data!.name,
               price: data!.price,
               typeDish: data!.typeDish,
             }}
             onSubmit={(values) => {
-              // values.typeDish.id = values.typeDish.id;
-              HttpService.updateDish(data!.id, values);
+              HttpService.updateDish(values.id, values);
             }}
           >
             {(props) => (
@@ -49,13 +51,16 @@ const UpdateDish = () => {
                   name="price"
                 /></div>
                 <div><label htmlFor="typeDish.id">Тип блюда</label>
-                <input
-                  type={"numder"}
-                  onChange={props.handleChange}
-                  value={props.values.typeDish.id}
-                  name="typeDish.id"
-                /></div>
-                <button type="submit">Submit</button>
+                  <select
+                    defaultValue={props.values.typeDish.id}
+                    onChange={props.handleChange}
+                    name="typeDish.id"
+                  >
+                    {typeDishAll.data?.map((el) => (<option value={el.id} key={el.id}> {el.typeName} </option>))}
+                  </select>
+                </div>
+                <button type="submit">Изменить</button>
+                <button type="submit" onClick={() => props.values.id = 0}>Создать</button>
               </form>
             )}
           </Formik>

@@ -5,9 +5,24 @@
     flex-direction: column;
     align-items: center;
 }
-input {
+input, select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
   }
+
+.allDivInMenu{
+    display: flex;
+    flex-direction: column;
+}
+.inMenu{
+    margin-left: 20px;
+}
+.formMenu{
+    display: flex;
+}
+
+p{
+    text-align: left;
+}

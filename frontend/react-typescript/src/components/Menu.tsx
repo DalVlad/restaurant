@@ -3,6 +3,7 @@ import { AxiosError } from "axios";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import {menuModel} from './Models/menuModel'
 import HttpService from "./HttpService";
+import { Link } from "react-router-dom";
  
 function Menu() {
   const queryClient = useQueryClient();
@@ -27,10 +28,11 @@ function Menu() {
           <table>
             <thead>
               <tr>
-                <th>name</th>
-                <th>timeStart</th>
-                <th>timeEnd</th>
-                <th>dishes</th>
+                <th>Название</th>
+                <th>С</th>
+                <th>До</th>
+                <th>В меню</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -50,6 +52,7 @@ function Menu() {
                         </div>
                       ))}
                     </td>
+                    <td><Link to={`/updateMenu/${el.id}`} >Изменить, создать</Link></td>
                     <td><button onClick={() => {deleteMenu.mutate(el.id)}}>Удалить</button></td>
                   </tr>
                 ))}

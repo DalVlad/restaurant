@@ -22,4 +22,5 @@ table{
     color: rgb(31, 31, 47);
     padding: 9px 8px;
     transition: .3s linear;
+    text-align: left;
   }
