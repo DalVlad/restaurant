@@ -1,6 +1,7 @@
 package com.dalv.restaurant.dto;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.dalv.restaurant.models.TypeDish;
@@ -15,6 +16,7 @@ public class DishDTO {
     @Min(value = 0, message = "Invalid price")
     private double price;
 
+    @NotNull
     private TypeDish typeDish;
 
     public long getId() {

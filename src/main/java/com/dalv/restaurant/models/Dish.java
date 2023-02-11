@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "type_dish_id", referencedColumnName = "id")
+    @NotNull
     private TypeDish typeDish;
 
     @ManyToMany(mappedBy = "dishes")

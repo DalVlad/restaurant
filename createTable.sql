@@ -23,5 +23,3 @@ create table menu_dish (
     dish_id int8 not null,
     foreign key (menu_id) references menu(id),
     foreign key (dish_id) references dish(id) ON DELETE CASCADE);
-
-
