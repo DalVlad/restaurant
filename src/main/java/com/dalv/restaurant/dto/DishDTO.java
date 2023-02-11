@@ -16,7 +16,6 @@ public class DishDTO {
     @Min(value = 0, message = "Invalid price")
     private double price;
 
-    @NotNull
     private TypeDish typeDish;
 
     public long getId() {

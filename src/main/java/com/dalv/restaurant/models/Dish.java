@@ -27,7 +27,6 @@ public class Dish {
 
     @ManyToOne
     @JoinColumn(name = "type_dish_id", referencedColumnName = "id")
-    @NotNull
     private TypeDish typeDish;
 
     @ManyToMany(mappedBy = "dishes")
