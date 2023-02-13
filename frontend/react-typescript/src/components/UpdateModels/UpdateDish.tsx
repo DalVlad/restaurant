@@ -20,7 +20,7 @@ const UpdateDish = () => {
   return (
     <div className="updateDish">
       <div className="forma">
-        {(isLoading ) ? (
+        {(isLoading || typeDishAll.isLoading) ? (
           <div>IsLoading</div>
         ) : (
           <Formik  

@@ -1,7 +1,6 @@
 package com.dalv.restaurant.dto;
 
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.dalv.restaurant.models.TypeDish;

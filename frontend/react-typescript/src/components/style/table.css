@@ -6,10 +6,9 @@ table{
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 14px;
     background: #e7e7e7;
-    max-width: 70%;
-    width: 70%;
     border-collapse: collapse;
     text-align: center;
+    margin: 20px 0;
   }
   th {
     font-weight: normal;
