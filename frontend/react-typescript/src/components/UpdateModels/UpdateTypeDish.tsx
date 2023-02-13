@@ -1,7 +1,7 @@
 import "../style/forma.css";
 import { useQuery } from "react-query";
 import { Formik } from "formik";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { AxiosError } from "axios";
 import HttpService from "../HttpService";
 import { typeDishModel } from "../Models/typeDishModel";
@@ -13,6 +13,7 @@ const UpdateTypeDish = () => {
     ["typeDish", id],
     () => HttpService.getTypeDish(idTypeDish)
   );
+  const navigator = useNavigate();
   return (
     <div className="updateTypeDish">
       <div className="forma">
@@ -25,7 +26,8 @@ const UpdateTypeDish = () => {
               typeName: data!.typeName,
             }}
             onSubmit={(values) => {
-              HttpService.updateTypeDish(values.id, values);
+              HttpService.updateTypeDish(values.id, values).then(() =>
+              navigator("/typeDish"));
             }}
           >
             {(props) => (

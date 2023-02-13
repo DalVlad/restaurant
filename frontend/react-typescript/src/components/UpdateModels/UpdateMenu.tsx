@@ -75,7 +75,7 @@ const UpdateDish = () => {
                         {(arrayHelpers) => (
                           <div>
                             <button
-                              onClick={() => arrayHelpers.push({name: " ", id: 0 } as dishModel)}
+                              onClick={() => arrayHelpers.push({id: 0 })}
                               type="button"
                             >
                               Добавить блюдо
