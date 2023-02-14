@@ -8,6 +8,8 @@ Frontend находится в папке "frontend".
 [Технологии](#technologies)
 
 <a name="start"><h2>Запуск</h2></a>
+#### Запус с помощью докера
+В корне проекта в командной строке запустить команду "docker-compose up -d"
 #### Запуск Бекенда
 - Используемая СУБД PostgreSQL.
 - Настройки СУДБ находятся в файле src/main/resources/application.properties
